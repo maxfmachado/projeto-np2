@@ -10,41 +10,38 @@ class Main {
 
         Util.cls();
         BancoDeDadosFake bd = GetBancoDeDadosFake(); // Método definido na linha 145 deste mesmo arquivo
-        
         // O sistema impede que a mesma cidade seja cadastrada mais de uma vez
 
 
 //        Cidade bsb = new Cidade(1, "Brasília", EnumUF.DF);
-//        
-//        bd.addCidade(bsb);
-
+//        //        bd.addCidade(bsb);
         
-//        bd.addCidade(brasilia);
-
+//      bd.addCidade(brasilia);
+//
 //      bd.addCidade(bsbRepetida2);
 //      bd.addCidade(bsbRepetida3);
                 
         // O sistema impede que o mesmo hotel seja cadastrado mais de uma vez
-//        Hotel hotelRepeido1 = new Hotel("B Hotel Brasília", 355.95f, brasilia);
+//      Hotel hotelRepetido1 = new Hotel(1, "B Hotel Brasília", 355.95f, bsb);
         
 //      Hotel hotelRepeido2 = new Hotel("B Hotel Brasília", 355.95f, bsbRepetida1);
-//      Hotel hotelRepeido3 = new Hotel("B Hotel Brasília", 355.95f, bsbRepetida1);
-//      bd.addHotel(hotelRepeido1);
-//      bd.addHotel(hotelRepeido2);
-//      bd.addHotel(hotelRepeido3);
+//	    Hotel hotelRepeido3 = new Hotel("B Hotel Brasília", 355.95f, bsbRepetida1);
+//	    bd.addHotel(hotelRepetido1);
+//	    bd.addHotel(hotelRepeido2);
+//	    bd.addHotel(hotelRepeido3);
         
-        // O sistema impede que o mesmo restaurante seja cadastrado mais de uma vez      
-//        Restaurante restRepetido1 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
-//        Restaurante restRepetido2 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
-//        Restaurante restRepetido3 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
-//        bd.addRestaurante(restRepetido1);
+//        // O sistema impede que o mesmo restaurante seja cadastrado mais de uma vez      
+//      Restaurante restRepetido1 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
+//      Restaurante restRepetido2 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
+//      Restaurante restRepetido3 = new Restaurante("Fred Restaurante",  35.95f, bsbRepetida1);
+//      bd.addRestaurante(restRepetido1);
 //      bd.addRestaurante(restRepetido2);
 //      bd.addRestaurante(restRepetido3);
         
         int	idEscolhido;        
-        
+       
         Scanner in = new Scanner(System.in);
-
+        
         System.out.println("Cadastrar novo pacote turístico: ");
         System.out.println("  * Cidade      : ");
         System.out.println("  * Hotel       : ");
@@ -54,6 +51,7 @@ class Main {
         System.out.println("  * Ref. diárias : ");
         System.out.println("-------------------------------------");
         System.out.println("  Cidades disponíveis: ");
+        
         for(Cidade c : bd.cidades){
             System.out.println(" ("+ c.id +") "  + c.nome +"/"+ c.UF);
         }
@@ -61,7 +59,7 @@ class Main {
         idEscolhido = in.nextInt();
         Cidade cidadeEscolhida = bd.getCidadePeloId(idEscolhido);
 
-        Util.cls();
+        Util.cls();Util.cls();Util.cls();
 
         System.out.println("Cadastrar novo pacote turístico ");
         System.out.println("  * Cidade       : "+ cidadeEscolhida.nome +"/"+cidadeEscolhida.UF);
@@ -73,8 +71,6 @@ class Main {
         System.out.println("-------------------------------------");
         System.out.println("  Hotéis disponíveis na cidade escolhida:");
         
-        Util.cls();
-        
         for(Hotel h : cidadeEscolhida.getHoteis()){
             System.out.println(" ("+ h.id +")   » " + h.nome);
         }
@@ -83,7 +79,7 @@ class Main {
         
         Hotel hotelEscolhido = bd.getHotelPeloId(cidadeEscolhida.hoteis, idEscolhido);
         
-        
+        Util.cls();
         System.out.println("Cadastrar novo pacote turístico ");
         System.out.println("  * Cidade       : "+ cidadeEscolhida.nome +"/"+cidadeEscolhida.UF);
         System.out.println("  * Hotel        : "+ hotelEscolhido.nome);
@@ -160,6 +156,9 @@ class Main {
         System.out.println("  » Hotel        : " + pacote.hotel.nome);
         System.out.printf ("  » Data início  : %02d/%02d/%d\n", dataIniPacote.get(Calendar.DAY_OF_MONTH), dataIniPacote.get(Calendar.MONTH)+1, dataIniPacote.get(Calendar.YEAR));
         System.out.printf ("  » Data fim     : %02d/%02d/%d\n", dataFimPacote.get(Calendar.DAY_OF_MONTH), dataIniPacote.get(Calendar.MONTH)+1, dataIniPacote.get(Calendar.YEAR));
+        System.out.println("  » Restaurante  : "+ pacote.restaurante.nome);
+        System.out.println("  » Ref. diárias : "+ pacote.qtdRefeicoesDiarias);
+        
         int qtdRefeicoes = in.nextInt();
 
     }
@@ -167,21 +166,21 @@ class Main {
 		public static BancoDeDadosFake GetBancoDeDadosFake(){
         BancoDeDadosFake bd = new BancoDeDadosFake();
         
-        Cidade bsb 			= new Cidade(1, "Brasília"		, EnumUF.DF);
-        Cidade saoPaulo 	= new Cidade(2, "São Paulo"		, EnumUF.SP);
+        Cidade bsb 			= new Cidade(1, "Brasilia"		, EnumUF.DF);
+        Cidade saoPaulo 	= new Cidade(2, "Sao Paulo"		, EnumUF.SP);
         Cidade rio			= new Cidade(3, "Rio de Janeiro", EnumUF.RJ);
         
 		bd.addCidade(bsb);
 		bd.addCidade(saoPaulo);
 		bd.addCidade(rio);
 
-		Hotel bHotelBrasilia 	= new Hotel(1, "B Hotel Brasília", 331.94f, bsb);
+		Hotel bHotelBrasilia 	= new Hotel(1, "B Hotel Brasilia", 331.94f, bsb);
 		Hotel athosBulcao 		= new Hotel(2, "Athos Bulcao"    , 365.74f, bsb);
 		Hotel cullinanplus 		= new Hotel(3, "Cullinan Plus"   , 355.99f, bsb);		
 		
 		Hotel atlanticoPrime 	= new Hotel(1, "Atlantico Prime"      , 265.95f, saoPaulo);
         Hotel pousoReal 		= new Hotel(2, "Pouso Real"           , 271.10f, saoPaulo);
-        Hotel americasBarra 	= new Hotel(3, "Américas Barra Hotel" , 166.45f, saoPaulo);
+        Hotel americasBarra 	= new Hotel(3, "Americas Barra Hotel" , 166.45f, saoPaulo);
         
         Hotel ibisPrime			= new Hotel(1, "Ibis Prime" 		, 265.95f, rio);
         Hotel pousoRio 			= new Hotel(2, "Pouso Rio"          , 271.10f, rio);
@@ -200,17 +199,17 @@ class Main {
         bd.addHotel(pousoRio);
         bd.addHotel(copacabanaPalace);
         
-        Restaurante fredRestaurante = new Restaurante(1, "Fred Restaurante", 35.95f, bsb);
-        Restaurante nazoSushiBar 	= new Restaurante(2, "Nazo Sushi Bar", 36.95f, bsb);
-        Restaurante caminitoParrila = new Restaurante(3, "Fred Restaurante", 34.95f, bsb);       
+        Restaurante fredRestaurante = new Restaurante(1, "Fred Restaurante" , 35.95f, bsb);
+        Restaurante nazoSushiBar 	= new Restaurante(2, "Nazo Sushi Bar"	, 36.95f, bsb);
+        Restaurante caminitoParrila = new Restaurante(3, "Fred Restaurante" , 34.95f, bsb);       
 
-        Restaurante cocoBambu 		= new Restaurante(1, "Fred Restaurante", 32.95f, saoPaulo);
-        Restaurante oliver 			= new Restaurante(2, "Nazo Sushi Bar", 39.95f, saoPaulo);
-        Restaurante taypaSabores 	= new Restaurante(3, "Fred Restaurante", 35.95f, saoPaulo);   
+        Restaurante cocoBambu 		= new Restaurante(1, "Fred Restaurante" , 32.95f, saoPaulo);
+        Restaurante oliver 			= new Restaurante(2, "Nazo Sushi Bar"	, 39.95f, saoPaulo);
+        Restaurante taypaSabores 	= new Restaurante(3, "Fred Restaurante" , 35.95f, saoPaulo);   
         
-        Restaurante cocoBambu2 			= new Restaurante(1, "Coco Bambu 2", 32.95f, rio);
-        Restaurante oliver2 			= new Restaurante(2, "Oliver 2", 39.95f, rio);
-        Restaurante taypaSabores2 		= new Restaurante(3, "Taypá Sabores Del Perú 2", 35.95f, rio);   
+        Restaurante cocoBambu2 			= new Restaurante(1, "Coco Bambu 2"            , 32.95f, rio);
+        Restaurante oliver2 			= new Restaurante(2, "Oliver 2"				   , 39.95f, rio);
+        Restaurante taypaSabores2 		= new Restaurante(3, "Taypa Sabores Del Peru 2", 35.95f, rio);   
         
         bd.addRestaurante(fredRestaurante);
         bd.addRestaurante(nazoSushiBar);

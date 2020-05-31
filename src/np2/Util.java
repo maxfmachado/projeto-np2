@@ -34,8 +34,10 @@ public class Util{
         return c;
     }
     
-    public static void cls(){
-//        System.out.print("\033[H\033[2J");  
+    public static void cls() {
+    	
+        System.out.print("\033[H\033[2J");  
         System.out.flush();
-    }
+    	
+    }     
 }

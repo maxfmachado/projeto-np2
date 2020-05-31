@@ -17,18 +17,16 @@ public class Cidade extends Entidade {
         restaurantes			= new ArrayList<Restaurante>();
 	}
 	
-	
-	public String getNome() {
-		return this.nome;
-	}
-	
-
 	public ArrayList<Hotel> getHoteis() {
 		return this.hoteis;
 	}
 
 	public ArrayList<Restaurante> getRestaurantes() {
 		return this.restaurantes;
+	}
+
+	public int getId() {
+		return this.id;
 	}
 	
 }

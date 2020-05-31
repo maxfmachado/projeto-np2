@@ -23,9 +23,10 @@ public class BancoDeDadosFake extends Entidade{
     }
 	
     public void addCidade(Cidade cidade) {
+    	
         if(!cidades.contains(cidade)){
             cidades.add(cidade);
-        }
+        }    	
     }
 
 	public void addHotel(Hotel hotel) {
@@ -37,12 +38,12 @@ public class BancoDeDadosFake extends Entidade{
 	}
 
 	public Cidade getCidadePeloId(int idEscolhido) {
-		for(int i = 0; i<cidades.size(); i++) {
-			if(cidades.get(i).id == idEscolhido) {
-				return cidades.get(i);
-			}
-		}
-		return cidades.get(idEscolhido);
+		for(Cidade c : cidades) {
+    		if(c.getId() == idEscolhido) {
+    			return c;
+    		}
+    	}
+    	return null;
 	}
 
     public Hotel getHotelPeloId(ArrayList<Hotel> hoteis, int idEscolhido) {
